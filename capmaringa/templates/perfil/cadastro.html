@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+    <div class="continer">
+        <div class="jumbotron">
+            {% if cadastrado %}
+                <h2>Obrigado por se cadastrar</h2><br>
+                <h3>Aguarde a conta ser liberada por um administrados</h3>
+            {% else %}
+                <h2>Cadastre-se aqui</h2><br>
+
+                <form enctype="multipart/form-data" method="POST">
+                    {% csrf_token %}
+                    <table class="table">
+                        {{ user_form.as_table }}
+                        {{ perfil_form.as_table }}
+                    </table>
+                    <input type="submit" value="Cadastrar" class="btn btn-primary">
+                </form>
+            {% endif %}
+        </div>
+    </div>
+{% endblock body_block %}
