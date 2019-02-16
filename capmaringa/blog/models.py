@@ -7,7 +7,7 @@ class Post(models.Model):
     descricao = models.TextField()
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
     data_publicacao = models.DateTimeField()
-    imagem = models.ImageField(upload_to='imagens/', blank=True)
+    imagem = models.ImageField(upload_to='imagens/', blank=True, null=True)
 
     def __str__(self):
         return self.titulo

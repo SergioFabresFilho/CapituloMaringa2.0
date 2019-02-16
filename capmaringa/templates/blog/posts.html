@@ -16,7 +16,9 @@
 
                 <h4>{{ post.descricao }}</h4><br><br><br>
 
-                <img src="{{ post.imagem.url }}" alt="" style="display: block; margin: auto;">
+                {% if post.imagem %}
+                    <img src="{{ post.imagem.url }}" alt="" style="display: block; margin: auto; max-width: 75%;">
+                {% endif %}
 
                 <br><br>
                 <h6>{{ post.autor }}</h6><br>
