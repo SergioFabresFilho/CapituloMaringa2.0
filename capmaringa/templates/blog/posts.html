@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+    <div class="container">
+        <div class="jumbotron">
+            {% if user.perfil.pode_postar %}
+                <a href="{% url 'blog:criar_post' %}" class="btn btn-primary">Adicionar post</a>
+            {% endif %}
+            {% for post in posts %}
+                <hr>
+                {% if post.autor == user %}
+                    <h2><a href="{% url 'blog:editar_post' post.id %}">{{ post.titulo }}</a></h2>
+                {% else %}
+                    <h2>{{ post.titulo }}</h2><br>
+                {% endif %}
+
+                <h4>{{ post.descricao }}</h4><br><br><br>
+
+                <img src="{{ post.imagem.url }}" alt="" style="display: block; margin: auto;">
+
+                <br><br>
+                <h6>{{ post.autor }}</h6><br>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

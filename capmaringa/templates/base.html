@@ -7,20 +7,20 @@
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     </head>
     <body>
-        <nav class="navbar navbar-default navbar-static-top" style="background-color: deepskyblue;">
+        <nav class="navbar navbar-default navbar-fixed-top" style="background-color: deepskyblue;">
             <div class="containter">
                 <ul class="nav navbar-nav" style="color: black;">
 
 
-                    <li><a href="" class="navbar-brand">Capitulo Maringá</a></li>
+                    <li><a href="{% url 'index' %}" class="navbar-brand">Capitulo Maringá</a></li>
                     {% if user.is_authenticated %}
                         <li><a href="{% url 'perfil:perfil_logout' %}" class="navbar-link">Sair</a></li>
                     {% else %}
-                        <li><a href="{% url 'perfil:cadastro' %}" class="navbar-link">Cadastrar</a></li>
                         <li><a href="{% url 'perfil:perfil_login' %}" class="navbar-link">Entrar</a></li>
+                        <li><a href="{% url 'perfil:cadastro' %}" class="navbar-link">Cadastrar</a></li>
                     {% endif %}
 
-                    <li><a href="#" class="navbar-link">Admin</a></li>
+                    <li><a href="{% url 'admin:index' %}" class="navbar-link">Admin</a></li>
 
                 </ul>
             </div>

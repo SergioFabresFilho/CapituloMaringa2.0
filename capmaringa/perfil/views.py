@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, reverse
+from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
@@ -25,8 +25,10 @@ def cadastro(request):
 
             cadastrado = True
 
-            # TODO fazer o logout
-            return HttpResponse('Voce foi cadastrado')
+            logout(request)
+            return render(request, 'mensagem.html', context={
+                'mensagem': 'Aguarde a autorização de um administrador para poder logar',
+            })
 
         else:
             print(user_form.errors, perfil_form.errors)
@@ -52,16 +54,17 @@ def perfil_login(request):
         if user:
             if user.perfil.conta_autorizada:
                 login(request, user)
-                # TODO redirecionar ao index
-                return HttpResponse('Voce esta logado')
+                return HttpResponseRedirect(reverse('blog:lista_posts'))
 
             else:
-                # TODO adicionar mensagem de conta nao autorizada
-                return HttpResponse('<h1>Conta nao autorizada</h1>')
+                return render(request, 'mensagem.html', context={
+                'mensagem': 'Conta não autorizada',
+            })
 
         else:
-            # TODO adicionar mensagem de login invalido
-            return HttpResponse('<h1>Login invalido</h1>')
+            return render(request, 'mensagem.html', context={
+                'mensagem': 'Login invalido',
+            })
 
     else:
         return render(request, 'perfil/login.html', context={})
@@ -70,5 +73,4 @@ def perfil_login(request):
 @login_required
 def perfil_logout(request):
     logout(request)
-    # TODO redirecionar ao index
-    return HttpResponse('Voce saiu')
+    return HttpResponseRedirect(reverse('blog:lista_posts'))
