@@ -14,13 +14,13 @@
                     <h2>{{ post.titulo }}</h2><br>
                 {% endif %}
 
-                <h4>{{ post.descricao }}</h4><br><br><br>
+                <br>
 
                 {% if post.imagem %}
-                    <img src="{{ post.imagem.url }}" alt="" style="display: block; margin: auto; max-width: 75%;">
+                    <img src="{{ post.imagem.url }}" alt="" style="display: block; margin: auto; max-width: 90%;"><br>
                 {% endif %}
 
-                <br><br>
+                <h4>{{ post.descricao }}</h4>
                 <h6>{{ post.autor }}</h6><br>
             {% endfor %}
         </div>
