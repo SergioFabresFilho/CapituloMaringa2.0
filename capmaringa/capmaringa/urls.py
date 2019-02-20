@@ -20,6 +20,7 @@ from django.conf import settings
 
 import perfil.urls
 import blog.urls
+import avisos.urls
 
 import blog.views
 
@@ -27,5 +28,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('perfil/', include(perfil.urls)),
     path('blog/', include(blog.urls)),
+    path('avisos/', include(avisos.urls)),
     path('', blog.views.lista_posts, name='index'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

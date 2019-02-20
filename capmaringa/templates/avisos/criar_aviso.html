@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+    <div class="container">
+        <div class="jumbotron">
+            <h2>Adicionar um aviso</h2><br>
+
+            <form enctype="multipart/form-data" method="POST">
+                {% csrf_token %}
+                <table class="table">
+                    {{ aviso_form.as_table }}
+                </table>
+                <input type="submit" value="Concluir" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
+{% endblock %}

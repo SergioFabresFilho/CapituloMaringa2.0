@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block body_block %}
+    <div class="container">
+        <div class="jumbotron">
+            <h2>Eventos do Capitulo</h2><br>
+
+            {% if user.is_authenticated %}
+                {% if user.perfil.pode_postar %}
+                    <a href="{% url 'avisos:criar_aviso' %}" class="btn btn-primary">Criar aviso</a><br><br>
+                {% endif %}
+            {% endif %}
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            Título
+                        </th>
+                        <th scope="col">
+                            Data
+                        </th>
+                        <th scope="col">
+                            Horário
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for aviso in avisos %}
+                        <tr
+                            {% if aviso.ja_aconteceu %}
+                                style="background-color: rgb(192, 192, 192);"
+                            {% else %}
+                                style="background-color: white;"
+                            {% endif %}
+                        >
+                            <td><a href="{% url 'avisos:aviso_detalhes' aviso.id %}">{{ aviso.titulo }}</a></td>
+                            <td>{{ aviso.data }}</td>
+                            <td>{{ aviso.horario }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

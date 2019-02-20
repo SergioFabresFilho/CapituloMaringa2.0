@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+    <div class="container">
+        <div class="jumbotron">
+            <p><h2>{{ aviso.titulo }}</h2></p>
+            <p><h4>{{ aviso.data }}</h4></p>
+            <p><h4>{{ aviso.horario }}</h4></p>
+            <p><h4>Lugar: {{ aviso.lugar }}</h4></p>
+            <p><h4>Endereço: {{ aviso.endereco }}</h4></p>
+            <p><h4>{{aviso.descricao}}</h4></p>
+            <p><h6> {{aviso.autor.username}} </h6></p>
+        </div>
+    </div>
+{% endblock %}
