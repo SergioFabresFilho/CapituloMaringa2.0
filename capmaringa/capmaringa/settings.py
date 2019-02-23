@@ -25,9 +25,9 @@ MEDIA_DIR = os.path.join(BASE_DIR,'media')
 SECRET_KEY = '2+uqtbwqx*cf*_^-+61&cg%49sm*lzq#qhl!xh&&)6b@(jgcy4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['capmaringa.pythonanywhere.com',]
 
 
 # Application definition
