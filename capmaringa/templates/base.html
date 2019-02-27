@@ -1,30 +1,38 @@
 <!DOCTYPE html>
+
+{% load staticfiles %}
+
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Capitulo Maringa</title>
+        <title>Capítulo Maringá</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="base.css">
     </head>
     <body>
-        <nav class="navbar navbar-default navbar-static-top" style="background-color: deepskyblue;">
-            <div class="containter">
-                <ul class="nav navbar-nav" style="color: black;">
-
-
-                    <li><a href="" class="navbar-brand">Capitulo Maringá</a></li>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="">Capítulo Maringá nº 89 da Ordem DeMolay</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="{% url 'blog:listar_posts' %}">Blog</a></li>
                     {% if user.is_authenticated %}
-                        <li><a href="{% url 'perfil:logout' %}" class="navbar-link">Sair</a></li>
-                    {% else %}
-                        <li><a href="{% url 'perfil:cadastro' %}" class="navbar-link">Cadastrar</a></li>
-                        <li><a href="{% url 'perfil:login' %}" class="navbar-link">Entrar</a></li>
+                        <li><a href="{% url 'avisos:listar_avisos' %}">Quadro de avisos</a></li>
                     {% endif %}
-
-                    <li><a href="#" class="navbar-link">Admin</a></li>
-
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if user.is_authenticated %}
+                        <li><a href=""><span class="glyphicon glyphicon-user"></span>{{ user.username }}</a></li>
+                        <li><a href="{% url 'perfil:logout' %}"><span class="glyphicon glyphicon-log-out"></span>Sair</a></li>
+                    {% else %}
+                        <li><a href="{% url 'perfil:cadastro' %}"><span class="glyphicon glyphicon-user"></span> Cadastrar</a></li>
+                        <li><a href="{% url 'perfil:login' %}"><span class="glyphicon glyphicon-log-in"></span> Entrar</a></li>
+                    {% endif %}
                 </ul>
             </div>
-        </nav>
+        </nav> 
         <div class="container">
             {% block body_block %}
             {% endblock %}

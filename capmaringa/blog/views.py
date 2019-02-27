@@ -11,7 +11,7 @@ from capmaringa.funcs import mensagem_generica
 
 # Create your views here.
 @login_required
-def criar_post(request):
+def criar_posts(request):
     if request.user.perfil.pode_postar:
         if request.method == 'POST':
             post_form = PostForm(data=request.POST)
@@ -42,7 +42,7 @@ def criar_post(request):
         return mensagem_generica(request, 'Voce nao pode postar')
 
 
-def lista_posts(request):
+def listar_posts(request):
     posts = Post.objects.all().order_by('-data_publicacao')[:25]
 
     return render(request, 'blog/posts.html', context={
@@ -63,7 +63,7 @@ def post_detalhe(request, post_id):
         return mensagem_generica(request, 'Voce nao pode editar esse post')
 
 @login_required
-def editar_post(request, post_id):
+def editar_posts(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
 
     if request.user == post.autor:

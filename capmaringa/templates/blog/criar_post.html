@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+    <div class="container">
+        <div class="jumbotron">
+            {% if editando %}
+                <h2>Editar post</h2><br>
+            {% else %}
+                <h2>Criar um Post:</h2><br>
+            {% endif %}
+
+            <form enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+
+                <table class="table">
+                    {{ post_form.as_table }}
+                </table>
+                <input type="submit" value="Confirmar" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
+{% endblock %}

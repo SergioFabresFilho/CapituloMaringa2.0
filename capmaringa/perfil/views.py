@@ -42,7 +42,7 @@ def cadastro(request):
         })
 
 
-def perfil_login(request):
+def login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -68,7 +68,7 @@ def perfil_login(request):
 
 
 @login_required
-def perfil_logout(request):
+def logout(request):
     logout(request)
     # TODO redirecionar ao index
     return HttpResponse('Voce saiu')

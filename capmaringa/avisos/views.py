@@ -9,7 +9,7 @@ from avisos.forms import AvisoForm
 from capmaringa.funcs import mensagem_generica
 
 # Create your views here.
-def lista_avisos(request):
+def listar_avisos(request):
     avisos = Aviso.objects.all().order_by('-data')[:25]
 
     return render(request, 'avisos/lista_avisos.html', context={
@@ -17,7 +17,7 @@ def lista_avisos(request):
     })
 
 
-def aviso_detalhes(request, aviso_id):
+def detalhes(request, aviso_id):
     aviso = get_object_or_404(Aviso, pk=aviso_id)
 
     return render(request, 'avisos/aviso_detalhes.html', context={
@@ -26,7 +26,7 @@ def aviso_detalhes(request, aviso_id):
 
 
 @login_required
-def criar_aviso(request):
+def criar_avisos(request):
     if request.user.perfil.pode_postar:
         if request.method == 'POST':
             aviso_form = AvisoForm(data=request.POST)
@@ -35,7 +35,7 @@ def criar_aviso(request):
                 aviso = aviso_form.save(commit=False)
                 aviso.autor = request.user
                 aviso.save()
-                return HttpResponseRedirect(reverse('avisos:lista_avisos'))
+                return HttpResponseRedirect(reverse('avisos:listar_avisos'))
 
             else:
                 # TODO colocar acentos

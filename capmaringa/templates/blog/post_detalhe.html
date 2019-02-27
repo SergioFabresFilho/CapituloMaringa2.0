@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+    <div class="container">
+        <div class="jumbotron">
+            <h2>{{ post.titulo }}</h2><br>
+            <h4>{{ post.descricao }}</h4><br>
+            <a href="{% url 'blog:adicionar_imagem' post.id %}" class="btn btn-primary">Adicionar imagem</a>
+        </div>
+    </div>
+{% endblock %}

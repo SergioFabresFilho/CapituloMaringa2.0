@@ -27,5 +27,5 @@ urlpatterns = [
     path('perfil/', include(perfil.urls)),
     path('blog/', include(blog.urls)),
     path('avisos/', include(avisos.urls)),
-    path('', blog.views.lista_posts, name='index'),
+    path('', blog.views.listar_posts, name='index'),
 ]
