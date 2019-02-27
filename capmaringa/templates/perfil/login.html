@@ -4,7 +4,7 @@
     <div class="container">
         <div class="jumbotron">
             <h2>Entrar</h2><br>
-            <form method="POST" action="{% url 'perfil:perfil_login' %}">
+            <form method="POST" action="{% url 'perfil:login' %}">
                 {% csrf_token %}
                 <p>
                     <label for="username">Usuario:</label>
