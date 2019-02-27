@@ -6,6 +6,6 @@ app_name = 'perfil'
 
 urlpatterns = [
     path('cadastro/', views.cadastro, name='cadastro'),
-    path('perfil_login/', views.perfil_login, name='perfil_login'),
-    path('perfil_logout/', views.perfil_logout, name='perfil_logout'),
+    path('perfil_login/', views.perfil_login, name='login'),
+    path('perfil_logout/', views.perfil_logout, name='logout'),
 ]

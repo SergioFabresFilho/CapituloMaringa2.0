@@ -14,10 +14,10 @@
 
                     <li><a href="" class="navbar-brand">Capitulo Maringá</a></li>
                     {% if user.is_authenticated %}
-                        <li><a href="{% url 'perfil:perfil_logout' %}" class="navbar-link">Sair</a></li>
+                        <li><a href="{% url 'perfil:logout' %}" class="navbar-link">Sair</a></li>
                     {% else %}
                         <li><a href="{% url 'perfil:cadastro' %}" class="navbar-link">Cadastrar</a></li>
-                        <li><a href="{% url 'perfil:perfil_login' %}" class="navbar-link">Entrar</a></li>
+                        <li><a href="{% url 'perfil:login' %}" class="navbar-link">Entrar</a></li>
                     {% endif %}
 
                     <li><a href="#" class="navbar-link">Admin</a></li>
